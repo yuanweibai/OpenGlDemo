@@ -1,8 +1,9 @@
 package com.rango.tool.opengldemo;
 
 import android.opengl.GLSurfaceView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.rango.tool.opengldemo.shape.TriangleRender;
 
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         mGlSurfaceView.setEGLContextClientVersion(2);
         mGlSurfaceView.setRenderer(new TriangleRender());
         mGlSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+
+        Log.e("rango","onCreate(): thread_id = "+Thread.currentThread().getId());
     }
 
     @Override protected void onResume() {

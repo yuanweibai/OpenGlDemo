@@ -2,6 +2,7 @@ package com.rango.tool.opengldemo.shape;
 
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.util.Log;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -45,6 +46,7 @@ public class TriangleRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        Log.e("rango", "onSurfaceCreated(): thread_id = " + Thread.currentThread().getId());
         GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
         ByteBuffer bb = ByteBuffer.allocateDirect(triangleCoords.length * 4);
         bb.order(ByteOrder.nativeOrder());
@@ -64,29 +66,33 @@ public class TriangleRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
+        Log.e("rango", "onSurfaceChanged(): width = " + width + ", height = " + height + ", thread_id = " + Thread.currentThread().getId());
         GLES20.glViewport(0, 0, width, height);
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT|GLES20.GL_DEPTH_BUFFER_BIT);
+        Log.e("rango", "onDrawFrame(): thread_id = " + Thread.currentThread().getId());
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
         GLES20.glUseProgram(mProgram);
 
         int positionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
         GLES20.glEnableVertexAttribArray(positionHandle);
 
-        GLES20.glVertexAttribPointer(positionHandle, COORDS_PER_VERTEX, GLES20.GL_FLOAT, false, vertexStride, vertexBuffer);
+        GLES20.glVertexAttribPointer(positionHandle, COORDS_PER_VERTEX, GLES20.GL_FLOAT, false, 0, vertexBuffer);
 
         int colorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
         GLES20.glUniform4fv(colorHandle, 1, color, 0);
 
+        //绘制三角形
         GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount);
 
+        //禁止顶点数组的句柄
         GLES20.glDisableVertexAttribArray(positionHandle);
 
     }
 
-    public int loadShader(int type, String shaderCode) {
+    private int loadShader(int type, String shaderCode) {
         //根据type创建顶点着色器或者片元着色器
         int shader = GLES20.glCreateShader(type);
         //将资源加入到着色器中，并编译
