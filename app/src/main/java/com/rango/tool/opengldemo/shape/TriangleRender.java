@@ -16,14 +16,14 @@ public class TriangleRender implements GLSurfaceView.Renderer {
     private final String vertexShaderCode =
             "attribute vec4 vPosition;" +
                     "void main() {" +
-                    "  gl_Position = vPosition;" +
+                    "gl_Position = vPosition;" +
                     "}";
 
     private final String fragmentShaderCode =
             "precision mediump float;" +
                     "uniform vec4 vColor;" +
                     "void main() {" +
-                    "  gl_FragColor = vColor;" +
+                    "gl_FragColor = vColor;" +
                     "}";
 
     static final int COORDS_PER_VERTEX = 3;
@@ -67,7 +67,7 @@ public class TriangleRender implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         Log.e("rango", "onSurfaceChanged(): width = " + width + ", height = " + height + ", thread_id = " + Thread.currentThread().getId());
-        GLES20.glViewport(0, 0, width, height);
+//        GLES20.glViewport(100, 100, width - 100, height - 100);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class TriangleRender implements GLSurfaceView.Renderer {
         int positionHandle = GLES20.glGetAttribLocation(mProgram, "vPosition");
         GLES20.glEnableVertexAttribArray(positionHandle);
 
-        GLES20.glVertexAttribPointer(positionHandle, COORDS_PER_VERTEX, GLES20.GL_FLOAT, false, 0, vertexBuffer);
+        GLES20.glVertexAttribPointer(positionHandle, COORDS_PER_VERTEX, GLES20.GL_FLOAT, true, 0, vertexBuffer);
 
         int colorHandle = GLES20.glGetUniformLocation(mProgram, "vColor");
         GLES20.glUniform4fv(colorHandle, 1, color, 0);
