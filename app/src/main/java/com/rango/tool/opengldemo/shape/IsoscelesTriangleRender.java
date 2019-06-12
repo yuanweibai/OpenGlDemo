@@ -69,8 +69,9 @@ public class IsoscelesTriangleRender implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         float ratio = width / (float) height;
-        Matrix.frustumM(projectMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
-        Matrix.setLookAtM(viewMatrix, 0, 0, 0, 7f, 0, 0, 0, 0, 1f, 0f);
+        Matrix.frustumM(projectMatrix, 0, -ratio, ratio, -1, 1, 3, 19);
+//        Matrix.orthoM(projectMatrix, 0, -ratio, ratio, -1, 1, 4, 12);
+        Matrix.setLookAtM(viewMatrix, 0, 0, 0, 12f, 0, 0, 0, 0, 1f, 0f);
         Matrix.multiplyMM(matrix, 0, projectMatrix, 0, viewMatrix, 0);
     }
 

@@ -38,6 +38,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:text="等腰三角形" />
+
+            <Button
+                android:id="@+id/colors_triangle_btn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="彩色三角形" />
         </LinearLayout>
     </ScrollView>
 
