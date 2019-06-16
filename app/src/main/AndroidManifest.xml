@@ -25,6 +25,7 @@
         <activity android:name=".shape.activity.TriangleActivity" />
         <activity android:name=".shape.activity.IsoscelesTriangleActivity" />
         <activity android:name=".shape.activity.ColorsTriangleActivity" />
+        <activity android:name=".shape.activity.OtherShapeActivity" />
     </application>
 
 </manifest>

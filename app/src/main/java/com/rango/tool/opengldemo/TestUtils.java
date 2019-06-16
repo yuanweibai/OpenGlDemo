@@ -1,15 +1,15 @@
 package com.rango.tool.opengldemo;
 
-import com.rango.tool.opengldemo.shape.activity.ColorsTriangleActivity;
+import com.rango.tool.opengldemo.shape.activity.OtherShapeActivity;
 
 public class TestUtils {
 
-    private static final boolean IS_TEST = false;
+    private static final boolean IS_TEST = true;
 
     public static Class getTestActivityClass() {
         if (!IS_TEST) {
             return null;
         }
-        return ColorsTriangleActivity.class;
+        return OtherShapeActivity.class;
     }
 }
