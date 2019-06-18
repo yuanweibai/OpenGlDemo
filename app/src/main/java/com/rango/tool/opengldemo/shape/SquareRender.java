@@ -11,11 +11,12 @@ import java.nio.ShortBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-public class OtherShapeRender implements GLSurfaceView.Renderer {
+public class SquareRender implements GLSurfaceView.Renderer {
 
     private static final String VERTEX_SHADER_CODE = "attribute vec4 position;" +
+            "uniform mat4 matrix;" +
             "void main(){" +
-            "gl_Position = position;" +
+            "gl_Position = matrix*position;" +
             "}";
 
     private static final String FRAGMENT_SHADER_CODE = "precision mediump float;" +
@@ -39,6 +40,8 @@ public class OtherShapeRender implements GLSurfaceView.Renderer {
     private FloatBuffer coordsBuffer;
     private ShortBuffer indexBuffer;
     private int program;
+
+
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
