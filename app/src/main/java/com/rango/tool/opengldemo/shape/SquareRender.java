@@ -2,6 +2,7 @@ package com.rango.tool.opengldemo.shape;
 
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -13,16 +14,19 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class SquareRender implements GLSurfaceView.Renderer {
 
-    private static final String VERTEX_SHADER_CODE = "attribute vec4 position;" +
-            "void main(){" +
-            "gl_Position = position;" +
-            "}";
+    private static final String VERTEX_SHADER_CODE =
+            "attribute vec4 position;" +
+                    "uniform mat4 matrix;" +
+                    "void main(){" +
+                    "gl_Position = matrix*position;" +
+                    "}";
 
-    private static final String FRAGMENT_SHADER_CODE = "precision mediump float;" +
-            "uniform vec4 color;" +
-            "void main(){" +
-            "gl_FragColor = color;" +
-            "}";
+    private static final String FRAGMENT_SHADER_CODE =
+            "precision mediump float;" +
+                    "uniform vec4 color;" +
+                    "void main(){" +
+                    "gl_FragColor = color;" +
+                    "}";
 
     private static float squareCoords[] = new float[]{
             -0.5f, 0.5f, 0f,
@@ -39,6 +43,10 @@ public class SquareRender implements GLSurfaceView.Renderer {
     private FloatBuffer coordsBuffer;
     private ShortBuffer indexBuffer;
     private int program;
+
+    private float[] lookMatrix = new float[16];
+    private float[] frustumMatrix = new float[16];
+    private float[] matrix = new float[16];
 
 
     @Override
@@ -73,13 +81,19 @@ public class SquareRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-
+        float rate = width / (float) height;
+        Matrix.setLookAtM(lookMatrix, 0, 0, 0, 15, 0, 0, 0, 0, 1, 0);
+        Matrix.frustumM(frustumMatrix, 0, -rate, rate, -1, 1, 8, 19);
+        Matrix.multiplyMM(matrix, 0, frustumMatrix, 0, lookMatrix, 0);
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
         GLES20.glUseProgram(program);
+
+        int matrixHandle = GLES20.glGetUniformLocation(program, "matrix");
+        GLES20.glUniformMatrix4fv(matrixHandle, 1, false, matrix, 0);
 
         int positionHandle = GLES20.glGetAttribLocation(program, "position");
         GLES20.glEnableVertexAttribArray(positionHandle);
