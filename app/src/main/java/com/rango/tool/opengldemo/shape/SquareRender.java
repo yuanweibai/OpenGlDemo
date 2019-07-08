@@ -14,9 +14,8 @@ import javax.microedition.khronos.opengles.GL10;
 public class SquareRender implements GLSurfaceView.Renderer {
 
     private static final String VERTEX_SHADER_CODE = "attribute vec4 position;" +
-            "uniform mat4 matrix;" +
             "void main(){" +
-            "gl_Position = matrix*position;" +
+            "gl_Position = position;" +
             "}";
 
     private static final String FRAGMENT_SHADER_CODE = "precision mediump float;" +
@@ -29,7 +28,7 @@ public class SquareRender implements GLSurfaceView.Renderer {
             -0.5f, 0.5f, 0f,
             -0.5f, -0.5f, 0f,
             0.5f, -0.5f, 0f,
-            0.5f, 0.5f, 0
+            0.5f, 0.5f, 0,
     };
 
     private static short index[] = new short[]{
@@ -40,7 +39,6 @@ public class SquareRender implements GLSurfaceView.Renderer {
     private FloatBuffer coordsBuffer;
     private ShortBuffer indexBuffer;
     private int program;
-
 
 
     @Override
@@ -89,8 +87,8 @@ public class SquareRender implements GLSurfaceView.Renderer {
 
         int colorHandle = GLES20.glGetUniformLocation(program, "color");
         GLES20.glUniform4fv(colorHandle, 1, color, 0);
-        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, 4);
-//        GLES20.glDrawElements(GLES20.GL_TRIANGLES, index.length, GLES20.GL_UNSIGNED_SHORT, indexBuffer);
+//        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, 4);
+        GLES20.glDrawElements(GLES20.GL_TRIANGLES, index.length, GLES20.GL_UNSIGNED_SHORT, indexBuffer);
         GLES20.glDisableVertexAttribArray(positionHandle);
     }
 }
