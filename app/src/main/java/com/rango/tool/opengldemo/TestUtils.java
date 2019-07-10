@@ -1,6 +1,7 @@
 package com.rango.tool.opengldemo;
 
 import com.rango.tool.opengldemo.shape.activity.CircleActivity;
+import com.rango.tool.opengldemo.shape.activity.ConeActivity;
 import com.rango.tool.opengldemo.shape.activity.CubeActivity;
 
 public class TestUtils {
@@ -11,6 +12,6 @@ public class TestUtils {
         if (!IS_TEST) {
             return null;
         }
-        return CubeActivity.class;
+        return ConeActivity.class;
     }
 }

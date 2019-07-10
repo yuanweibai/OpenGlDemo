@@ -62,6 +62,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:text="立方体" />
+
+            <Button
+                android:id="@+id/cone_btn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="锥体" />
         </LinearLayout>
     </ScrollView>
 

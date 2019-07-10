@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.rango.tool.opengldemo.shape.activity.CircleActivity;
 import com.rango.tool.opengldemo.shape.activity.ColorsTriangleActivity;
+import com.rango.tool.opengldemo.shape.activity.ConeActivity;
 import com.rango.tool.opengldemo.shape.activity.CubeActivity;
 import com.rango.tool.opengldemo.shape.activity.IsoscelesTriangleActivity;
 import com.rango.tool.opengldemo.shape.activity.SquareActivity;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.square_btn).setOnClickListener(v -> startActivity(SquareActivity.class));
         findViewById(R.id.circle_btn).setOnClickListener(v -> startActivity(CircleActivity.class));
         findViewById(R.id.cube_btn).setOnClickListener(v -> startActivity(CubeActivity.class));
+        findViewById(R.id.cone_btn).setOnClickListener(v -> startActivity(ConeActivity.class));
 
         Class cl = TestUtils.getTestActivityClass();
         if (cl != null) {
