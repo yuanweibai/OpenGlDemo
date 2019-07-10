@@ -27,6 +27,7 @@
         <activity android:name=".shape.activity.ColorsTriangleActivity" />
         <activity android:name=".shape.activity.SquareActivity" />
         <activity android:name=".shape.activity.CircleActivity" />
+        <activity android:name=".shape.activity.CubeActivity" />
     </application>
 
 </manifest>

@@ -56,6 +56,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:text="圆" />
+
+            <Button
+                android:id="@+id/cube_btn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="立方体" />
         </LinearLayout>
     </ScrollView>
 

@@ -42,7 +42,7 @@ public class CircleRender implements GLSurfaceView.Renderer {
         pointers.add(0f);
 
         float span = 360f / 180f;
-        float radius = 1f;
+        float radius = 0.5f;
         for (float i = 0f; i < 360 + span; i += span) {
             pointers.add((float) (radius * Math.sin(i * Math.PI / 180f)));
             pointers.add((float) (radius * Math.cos(i * Math.PI / 180f)));
