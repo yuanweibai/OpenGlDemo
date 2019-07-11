@@ -75,6 +75,7 @@ public class ConeRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        GLES20.glEnable(GLES20.GL_DEPTH_TEST);
         GLES20.glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
         ByteBuffer byteBuffer = ByteBuffer.allocateDirect(circlePointers.length * 4);
         byteBuffer.order(ByteOrder.nativeOrder());
@@ -100,7 +101,7 @@ public class ConeRender implements GLSurfaceView.Renderer {
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         float rate = width / (float) height;
         Matrix.frustumM(frustumMatrix, 0, -rate, rate, -1, 1, 3, 20);
-        Matrix.setLookAtM(lookMatrix, 0, 1f, -10f, 4f, 0, 0, 0, 0, 1, 0);
+        Matrix.setLookAtM(lookMatrix, 0, 1.0f, -10.0f, -4.0f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
         Matrix.multiplyMM(matrix, 0, frustumMatrix, 0, lookMatrix, 0);
     }
 
