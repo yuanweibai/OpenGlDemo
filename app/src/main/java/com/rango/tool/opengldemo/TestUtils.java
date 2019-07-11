@@ -1,8 +1,6 @@
 package com.rango.tool.opengldemo;
 
-import com.rango.tool.opengldemo.shape.activity.CircleActivity;
-import com.rango.tool.opengldemo.shape.activity.ConeActivity;
-import com.rango.tool.opengldemo.shape.activity.CubeActivity;
+import com.rango.tool.opengldemo.shape.activity.CylinderActivity;
 
 public class TestUtils {
 
@@ -12,6 +10,6 @@ public class TestUtils {
         if (!IS_TEST) {
             return null;
         }
-        return ConeActivity.class;
+        return CylinderActivity.class;
     }
 }

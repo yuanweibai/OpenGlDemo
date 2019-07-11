@@ -29,6 +29,7 @@
         <activity android:name=".shape.activity.CircleActivity" />
         <activity android:name=".shape.activity.CubeActivity" />
         <activity android:name=".shape.activity.ConeActivity" />
+        <activity android:name=".shape.activity.CylinderActivity" />
     </application>
 
 </manifest>

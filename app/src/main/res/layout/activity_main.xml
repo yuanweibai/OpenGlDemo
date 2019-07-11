@@ -68,6 +68,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:text="锥体" />
+
+            <Button
+                android:id="@+id/cylinder_btn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="圆柱体" />
         </LinearLayout>
     </ScrollView>
 

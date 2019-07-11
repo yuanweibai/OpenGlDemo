@@ -8,6 +8,7 @@ import com.rango.tool.opengldemo.shape.activity.CircleActivity;
 import com.rango.tool.opengldemo.shape.activity.ColorsTriangleActivity;
 import com.rango.tool.opengldemo.shape.activity.ConeActivity;
 import com.rango.tool.opengldemo.shape.activity.CubeActivity;
+import com.rango.tool.opengldemo.shape.activity.CylinderActivity;
 import com.rango.tool.opengldemo.shape.activity.IsoscelesTriangleActivity;
 import com.rango.tool.opengldemo.shape.activity.SquareActivity;
 import com.rango.tool.opengldemo.shape.activity.TriangleActivity;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.circle_btn).setOnClickListener(v -> startActivity(CircleActivity.class));
         findViewById(R.id.cube_btn).setOnClickListener(v -> startActivity(CubeActivity.class));
         findViewById(R.id.cone_btn).setOnClickListener(v -> startActivity(ConeActivity.class));
+        findViewById(R.id.cylinder_btn).setOnClickListener(v -> startActivity(CylinderActivity.class));
 
         Class cl = TestUtils.getTestActivityClass();
         if (cl != null) {
