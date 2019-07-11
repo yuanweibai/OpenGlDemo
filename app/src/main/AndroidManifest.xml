@@ -30,6 +30,8 @@
         <activity android:name=".shape.activity.CubeActivity" />
         <activity android:name=".shape.activity.ConeActivity" />
         <activity android:name=".shape.activity.CylinderActivity" />
+        <activity android:name=".shape.activity.BallActivity" />
+        <activity android:name=".shape.activity.LightBallActivity" />
     </application>
 
 </manifest>

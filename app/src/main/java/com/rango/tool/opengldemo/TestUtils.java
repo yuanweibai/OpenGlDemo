@@ -1,6 +1,6 @@
 package com.rango.tool.opengldemo;
 
-import com.rango.tool.opengldemo.shape.activity.CylinderActivity;
+import com.rango.tool.opengldemo.shape.activity.LightBallActivity;
 
 public class TestUtils {
 
@@ -10,6 +10,6 @@ public class TestUtils {
         if (!IS_TEST) {
             return null;
         }
-        return CylinderActivity.class;
+        return LightBallActivity.class;
     }
 }
